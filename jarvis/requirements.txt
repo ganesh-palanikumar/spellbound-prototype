@@ -1,0 +1,4 @@
+aiohttp>=3.9
+opencv-python-headless>=4.8
+# picamera2 must be installed via apt on the Pi:
+#   sudo apt install -y python3-picamera2
