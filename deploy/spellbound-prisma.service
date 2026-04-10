@@ -1,0 +1,17 @@
+[Unit]
+Description=Spellbound Prisma
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=lekha
+WorkingDirectory=/home/lekha/spellbound
+Environment=PYTHONPATH=/home/lekha/spellbound
+ExecStart=/usr/bin/python3 prisma/main.py
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
