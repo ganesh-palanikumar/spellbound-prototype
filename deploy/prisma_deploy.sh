@@ -22,6 +22,6 @@ echo "==> Installing Python dependencies on Prisma"
 ssh "${REMOTE}" "pip3 install --quiet -r ${DEST}/prisma/requirements.txt"
 
 echo "==> Restarting spellbound-prisma service"
-ssh "${REMOTE}" "sudo systemctl restart spellbound-prisma 2>/dev/null || echo 'systemd service not set up yet — run manually: cd ${DEST} && PYTHONPATH=${DEST} python3 prisma/main.py'"
+ssh -t "${REMOTE}" "sudo systemctl restart spellbound-prisma 2>/dev/null || echo 'systemd service not set up yet — run manually: cd ${DEST} && PYTHONPATH=${DEST} python3 prisma/main.py'"
 
 echo "==> Done. Prisma deploy complete."

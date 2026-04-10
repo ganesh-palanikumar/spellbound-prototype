@@ -6,11 +6,11 @@ set -euo pipefail
 
 echo "==> Installing systemd service on Jarvis"
 scp deploy/spellbound-jarvis.service lekha@jarvis.local:/tmp/
-ssh lekha@jarvis.local "sudo mv /tmp/spellbound-jarvis.service /etc/systemd/system/ && sudo systemctl daemon-reload && sudo systemctl enable spellbound-jarvis"
+ssh -t lekha@jarvis.local "sudo mv /tmp/spellbound-jarvis.service /etc/systemd/system/ && sudo systemctl daemon-reload && sudo systemctl enable spellbound-jarvis"
 
 echo "==> Installing systemd service on Prisma"
 scp deploy/spellbound-prisma.service lekha@prisma.local:/tmp/
-ssh lekha@prisma.local "sudo mv /tmp/spellbound-prisma.service /etc/systemd/system/ && sudo systemctl daemon-reload && sudo systemctl enable spellbound-prisma"
+ssh -t lekha@prisma.local "sudo mv /tmp/spellbound-prisma.service /etc/systemd/system/ && sudo systemctl daemon-reload && sudo systemctl enable spellbound-prisma"
 
 echo "==> Services installed. They will start automatically on next boot."
 echo "    To start now: ssh lekha@prisma.local 'sudo systemctl start spellbound-prisma'"

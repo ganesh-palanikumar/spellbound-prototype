@@ -22,6 +22,6 @@ echo "==> Installing Python dependencies on Jarvis"
 ssh "${REMOTE}" "pip3 install --quiet -r ${DEST}/jarvis/requirements.txt"
 
 echo "==> Restarting spellbound-jarvis service"
-ssh "${REMOTE}" "sudo systemctl restart spellbound-jarvis 2>/dev/null || echo 'systemd service not set up yet — run manually: cd ${DEST} && PYTHONPATH=${DEST} python3 jarvis/main.py'"
+ssh -t "${REMOTE}" "sudo systemctl restart spellbound-jarvis 2>/dev/null || echo 'systemd service not set up yet — run manually: cd ${DEST} && PYTHONPATH=${DEST} python3 jarvis/main.py'"
 
 echo "==> Done. Jarvis deploy complete."
